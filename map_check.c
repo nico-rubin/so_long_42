@@ -6,14 +6,14 @@
 /*   By: nrubin <nrubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:59:24 by nrubin            #+#    #+#             */
-/*   Updated: 2021/09/15 13:28:05 by nrubin           ###   ########.fr       */
+/*   Updated: 2021/09/15 15:24:14 by nrubin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 
 // Check that the correct number of arguments are passed to the function and that the argument is of correct type
-int ft_check_args(int argc, char **argv)
+int check_args(int argc, char **argv)
 {
     char *p;
 
@@ -44,7 +44,7 @@ int ft_check_args(int argc, char **argv)
 }
 
 
-char    **ft_read_map(int fd, char **argv)
+char    **read_map(int fd, char **argv)
 {
     char    **map;
     int     i;
@@ -65,9 +65,9 @@ int main(int argc, char **argv)
     char    **map;
     int     fd;
 
-    ft_check_args(argc, argv);
+    check_args(argc, argv);
     fd = open(argv[1], O_RDONLY);
-    map = ft_read_map(fd, argv);
+    map = read_map(fd, argv);
 
     return (0);
 }
