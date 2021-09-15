@@ -6,7 +6,7 @@
 /*   By: nrubin <nrubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:59:24 by nrubin            #+#    #+#             */
-/*   Updated: 2021/09/15 12:36:20 by nrubin           ###   ########.fr       */
+/*   Updated: 2021/09/15 12:43:32 by nrubin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,14 @@ int ft_check_args(int argc, char **argv)
         printf("Error. Enter only one argument.\n");
         return (-1);
     }
-    // Check that it is a file with .ber extension type
-    p = ft_strchr(argv[1], '.');
-    if (p == NULL)
+    // Check that it is a file
+    if (!ft_strchr(argv[1], '.'))
     {
         printf("Error. Not a file.\n");
         return (-1);
     }
+    // Check that it is a .ber
+    p = ft_strchr(argv[1], '.');
     if (p[1] == 'b' && p[2] == 'e' && p[3] == 'r' && p[4] == '\0')
     {
         printf("Good job\n");
