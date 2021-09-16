@@ -6,7 +6,7 @@
 /*   By: nrubin <nrubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:59:24 by nrubin            #+#    #+#             */
-/*   Updated: 2021/09/16 14:01:01 by nrubin           ###   ########.fr       */
+/*   Updated: 2021/09/16 14:15:41 by nrubin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,13 @@
 // Initialize map structure
 t_list map_init(void)
 {
-    t_list map;
-    
-    map.map = NULL;
-    map.height = 0;
-    map.width = 0;
-    return (map);
+    t_list t_map;
+
+    t_map.map = NULL;
+    t_map.height = 0;
+    t_map.width = 0;
+
+    return (t_map);
 }
 
 // Check that the correct number of arguments are passed to the function and that the argument is of correct type
@@ -53,34 +54,29 @@ int check_args(int argc, char **argv)
 }
 
 
-void    read_map(int fd, char **line, t_list *t_map)
+void    read_map(int fd, char **map, t_list *t_map)
 {
     int i;
 
     i = 0;
-    t_map->height = 0;
-    while (get_next_line(fd, line))
+    while (get_next_line(fd, map))
     {
-        printf("%s\n", *line);
-        //t_map->map[i] = ft_strdup(*line);
-        //i++;
+        t_map->map[i] = ft_strdup(*map);
+        i++;
     }
-    printf("%s\n", *line);
-    //t_map->map[i] = ft_strdup(*line);
+    t_map->map[i] = ft_strdup(*map);
 }
 
 
 int main(int argc, char **argv)
 {
-    char    **line;
     t_list  t_map;
     int     fd;
 
-    line = NULL;
     t_map = map_init();
     check_args(argc, argv);
     fd = open(argv[1], O_RDONLY);
-    read_map(fd, line, &t_map);
+    read_map(fd, argv, &t_map);
 
     return (0);
 }
