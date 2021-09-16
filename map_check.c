@@ -6,7 +6,7 @@
 /*   By: nrubin <nrubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:59:24 by nrubin            #+#    #+#             */
-/*   Updated: 2021/09/16 16:45:40 by nrubin           ###   ########.fr       */
+/*   Updated: 2021/09/16 16:59:15 by nrubin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,22 +45,26 @@ int check_map(t_list *t_map)
     int i;
 
     i = 0;
-    if (t_map.height < 3)
+    // Needs at least 3 lines
+    if (t_map->height < 3)
     {
         printf("This is not a rectangle (need at least three line)\n");
         return (-1);
     }
 
-    while (i < t_map.height)
+    // Needs all lines to be the same width
+    while (i < t_map->height)
     {
-        if (ft_strlen(t_map.map[0]) != ft_strlen(t_map.map[i]))
+        if (ft_strlen(t_map->map[0]) != ft_strlen(t_map->map[i]))
         {
             printf("This is not a rectangle (all lines need to be the same lenght)\n");
             return (-1);
         }
-        i++;
+        else
+            i++;
     }
-    t_map->widht = ft_strlen(t_map.map[0]);
+    // Since it is a rectangle, set the t_map width the to lenght of the first line.
+    t_map->width = ft_strlen(t_map->map[0]);
     return (0);
 }
 
