@@ -6,7 +6,7 @@
 /*   By: nrubin <nrubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:59:24 by nrubin            #+#    #+#             */
-/*   Updated: 2021/09/16 16:59:15 by nrubin           ###   ########.fr       */
+/*   Updated: 2021/09/16 17:23:34 by nrubin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int check_map(t_list *t_map)
         printf("This is not a rectangle (need at least three line)\n");
         return (-1);
     }
-
     // Needs all lines to be the same width
     while (i < t_map->height)
     {
@@ -70,6 +69,24 @@ int check_map(t_list *t_map)
 
 
 // Check that the sides are 1
+int check_sides(t_list *t_map)
+{
+    int i;
+    int j;
+
+    i = 0;
+    while (i < t_map->height)
+    {
+        while (j < t_map->width)
+        {
+            if (t_map[i][j] != '1')
+            {
+                
+                return (-1);
+            }
+        }
+    }
+}
 
 // Check that the inside is 0 1 C E or P
 
