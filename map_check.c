@@ -6,7 +6,7 @@
 /*   By: nrubin <nrubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:59:24 by nrubin            #+#    #+#             */
-/*   Updated: 2021/09/16 15:46:09 by nrubin           ###   ########.fr       */
+/*   Updated: 2021/09/16 16:01:14 by nrubin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void    get_map_height(int fd, char **map, t_list *t_map)
     int i;
 
     i = 0;
-    while (get_next_line(fd, map) > 0)
+    while (get_next_line(fd, map))
         i++;
     i++;
     t_map->height = i;
@@ -69,13 +69,9 @@ void    read_map(int fd, char **map, t_list *t_map)
     int i;
 
     i = 0;
-    printf("%i\n", t_map->height);
-    t_map->map = (char **)malloc(sizeof(t_map->map) * 5/*t_map->height*/); 
-    while (get_next_line(fd, map))
-    {    
-        t_map->map[i] = ft_strdup(*map);
-        i++;
-    }
+    t_map->map = (char **)malloc(sizeof(t_map->map) * t_map->height);
+    while (get_next_line(fd, map) > 0)
+        t_map->map[i++] = ft_strdup(*map);
     t_map->map[i] = ft_strdup(*map);
 }
 
@@ -83,15 +79,21 @@ void    read_map(int fd, char **map, t_list *t_map)
 int main(int argc, char **argv)
 {
     t_list  t_map;
-    int     i;
     int     fd;
 
-    i = 0;
     t_map = map_init();
     check_args(argc, argv);
     fd = open(argv[1], O_RDONLY);
     get_map_height(fd, argv, &t_map);
+    close(fd);
+    fd = open(argv[1], O_RDONLY);
     read_map(fd, argv, &t_map);
-    printf("%s\n", t_map.map[2]);
+    // TESTING
+    int     i;
+
+    i = 0;
+    while (i < t_map.height)
+        printf("%s\n", t_map.map[i++]);
+    // END TEST
     return (0);
 }
