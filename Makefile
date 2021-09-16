@@ -6,7 +6,7 @@
 #    By: nrubin <nrubin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/15 11:40:37 by nrubin            #+#    #+#              #
-#    Updated: 2021/09/16 16:25:29 by nrubin           ###   ########.fr        #
+#    Updated: 2021/09/16 18:47:26 by nrubin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME	=	so_long
 
 SRC	=	map_check.c \
 		so_long.c \
+		utils.c \
 
 OBJ		=	$(SRC:.c=.o)
 

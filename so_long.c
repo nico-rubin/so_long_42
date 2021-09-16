@@ -6,7 +6,7 @@
 /*   By: nrubin <nrubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:59:24 by nrubin            #+#    #+#             */
-/*   Updated: 2021/09/16 17:41:50 by nrubin           ###   ########.fr       */
+/*   Updated: 2021/09/16 18:58:51 by nrubin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int check_args(int argc, char **argv)
         return (-1);
     }
     // Check that it is a file
-    if (!ft_strchr(argv[1], '.'))
+    if (!ft_strfind(argv[1], '.'))
     {
         printf("Error. Not a file.\n");
         return (-1);
@@ -59,17 +59,28 @@ int main(int argc, char **argv)
     int     fd;
 
     t_map = map_init();
-    check_args(argc, argv);
+    if (check_args(argc, argv) == -1)
+        return (-1);
     fd = open(argv[1], O_RDONLY);
     get_map_height(fd, argv, &t_map);
     close(fd);
     fd = open(argv[1], O_RDONLY);
     read_map(fd, argv, &t_map);
     close(fd);
+    // CHECKS (to put in 1 function)
     if (check_map(&t_map) == -1)
         return (-1);
     if (check_sides(&t_map) == -1)
-        return (-1); 
+        return (-1);
+    if (check_inside(&t_map) == -1)
+        return (-1);
+    if (check_e(&t_map) == -1)
+        return (-1);
+    if (check_p(&t_map) == -1)
+        return (-1);
+    if (check_c(&t_map) == -1)
+        return (-1);
+    // CHECKS
     // TESTING
     int     i;
 
