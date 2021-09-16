@@ -6,7 +6,7 @@
 /*   By: nrubin <nrubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:59:24 by nrubin            #+#    #+#             */
-/*   Updated: 2021/09/16 17:23:34 by nrubin           ###   ########.fr       */
+/*   Updated: 2021/09/16 17:54:37 by nrubin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,17 +75,30 @@ int check_sides(t_list *t_map)
     int j;
 
     i = 0;
-    while (i < t_map->height)
+    j = 0;
+
+    printf("height: %i\nwidth: %i\n", t_map->height, t_map->width);
+
+    while (i < t_map->width)
     {
-        while (j < t_map->width)
+        if (t_map->map[0][i] != '1' || t_map->map[t_map->height - 1][i] != '1')
         {
-            if (t_map[i][j] != '1')
-            {
-                
-                return (-1);
-            }
+            printf("The borders (height) are not all 1s\n");
+            return (-1);
         }
+        i++;    
     }
+
+    while (j < t_map->height)
+    {
+        if (t_map->map[j][0] != '1' || t_map->map[j][t_map->width - 1] != '1')
+        {
+            printf("The borders (width) are not all 1s\n");
+            return (-1);
+        }
+        j++;
+    }
+    return (0);
 }
 
 // Check that the inside is 0 1 C E or P

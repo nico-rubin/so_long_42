@@ -6,7 +6,7 @@
 /*   By: nrubin <nrubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:59:24 by nrubin            #+#    #+#             */
-/*   Updated: 2021/09/16 16:55:05 by nrubin           ###   ########.fr       */
+/*   Updated: 2021/09/16 17:41:50 by nrubin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,9 @@ int main(int argc, char **argv)
     read_map(fd, argv, &t_map);
     close(fd);
     if (check_map(&t_map) == -1)
-        return (0); 
+        return (-1);
+    if (check_sides(&t_map) == -1)
+        return (-1); 
     // TESTING
     int     i;
 
