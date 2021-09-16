@@ -6,11 +6,23 @@
 /*   By: nrubin <nrubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:59:24 by nrubin            #+#    #+#             */
-/*   Updated: 2021/09/15 15:24:14 by nrubin           ###   ########.fr       */
+/*   Updated: 2021/09/16 14:01:01 by nrubin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "so_long.h"
 #include "libft/libft.h"
+
+// Initialize map structure
+t_list map_init(void)
+{
+    t_list map;
+    
+    map.map = NULL;
+    map.height = 0;
+    map.width = 0;
+    return (map);
+}
 
 // Check that the correct number of arguments are passed to the function and that the argument is of correct type
 int check_args(int argc, char **argv)
@@ -32,10 +44,7 @@ int check_args(int argc, char **argv)
     // Check that it is a .ber
     p = ft_strchr(argv[1], '.');
     if (p[1] == 'b' && p[2] == 'e' && p[3] == 'r' && p[4] == '\0')
-    {
-        printf("Good job\n");
         return (0);
-    }
     else
     {
         printf("Error. Not an accepted file type.\n");
@@ -44,30 +53,34 @@ int check_args(int argc, char **argv)
 }
 
 
-char    **read_map(int fd, char **argv)
+void    read_map(int fd, char **line, t_list *t_map)
 {
-    char    **map;
-    int     i;
+    int i;
 
     i = 0;
-    while (get_next_line(fd, argv))
+    t_map->height = 0;
+    while (get_next_line(fd, line))
     {
-        map[i] = get_next_line(fd, argv);
-        printf("line: %s\ni: %i\n", map[i], i);
-        i++;
+        printf("%s\n", *line);
+        //t_map->map[i] = ft_strdup(*line);
+        //i++;
     }
-    return (map);
+    printf("%s\n", *line);
+    //t_map->map[i] = ft_strdup(*line);
 }
 
 
 int main(int argc, char **argv)
 {
-    char    **map;
+    char    **line;
+    t_list  t_map;
     int     fd;
 
+    line = NULL;
+    t_map = map_init();
     check_args(argc, argv);
     fd = open(argv[1], O_RDONLY);
-    map = read_map(fd, argv);
+    read_map(fd, line, &t_map);
 
     return (0);
 }

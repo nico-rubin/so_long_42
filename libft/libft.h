@@ -6,7 +6,7 @@
 /*   By: nrubin <nrubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 19:51:36 by nrubin            #+#    #+#             */
-/*   Updated: 2021/05/24 16:27:18 by nrubin           ###   ########.fr       */
+/*   Updated: 2021/09/16 13:22:52 by nrubin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ char			*ft_strtrim(char const *s1, char const *set);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 int				get_next_line(int fd, char **line);
 
+/*
 typedef struct s_list
 {
 	void			*content;
@@ -86,5 +87,5 @@ t_list			*ft_lstmap(t_list *lst, void *(*f)(void *), void
 					(*del)(void *));
 t_list			*ft_lstnew(void *content);
 int				ft_lstsize(t_list *lst);
-
+*/
 #endif

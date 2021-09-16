@@ -6,7 +6,7 @@
 #    By: nrubin <nrubin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/20 18:05:50 by nrubin            #+#    #+#              #
-#    Updated: 2021/01/22 11:10:45 by nrubin           ###   ########.fr        #
+#    Updated: 2021/09/16 13:23:16 by nrubin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,15 +47,6 @@ SRC	=	ft_atoi.c \
 		ft_putstr_fd.c \
 		ft_putendl_fd.c \
 		ft_putnbr_fd.c \
-		ft_lstnew.c\
-		ft_lstadd_front.c \
-		ft_lstsize.c \
-		ft_lstlast.c \
-		ft_lstadd_back.c \
-		ft_lstdelone.c \
-		ft_lstclear.c \
-		ft_lstiter.c \
-		ft_lstmap.c \
 		get_next_line.c \
 
 OBJ	=	$(SRC:.c=.o)
