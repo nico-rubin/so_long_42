@@ -6,7 +6,7 @@
 /*   By: nrubin <nrubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:59:24 by nrubin            #+#    #+#             */
-/*   Updated: 2021/09/16 18:58:51 by nrubin           ###   ########.fr       */
+/*   Updated: 2021/09/16 19:05:16 by nrubin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ int main(int argc, char **argv)
     fd = open(argv[1], O_RDONLY);
     read_map(fd, argv, &t_map);
     close(fd);
-    // CHECKS (to put in 1 function)
     if (check_map(&t_map) == -1)
         return (-1);
     if (check_sides(&t_map) == -1)
@@ -80,13 +79,6 @@ int main(int argc, char **argv)
         return (-1);
     if (check_c(&t_map) == -1)
         return (-1);
-    // CHECKS
-    // TESTING
-    int     i;
-
-    i = 0;
-    while (i < t_map.height)
-        printf("%s\n", t_map.map[i++]);
-    // END TEST
+    printf("Map is good.\n");
     return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: nrubin <nrubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:59:24 by nrubin            #+#    #+#             */
-/*   Updated: 2021/09/16 19:01:28 by nrubin           ###   ########.fr       */
+/*   Updated: 2021/09/16 19:06:02 by nrubin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int check_map(t_list *t_map)
     // Needs at least 3 lines
     if (t_map->height < 3)
     {
-        printf("This is not a rectangle (need at least three line)\n");
+        printf("This is not a rectangle (need at least three line).\n");
         return (-1);
     }
     // Needs all lines to be the same width
@@ -56,7 +56,7 @@ int check_map(t_list *t_map)
     {
         if (ft_strlen(t_map->map[0]) != ft_strlen(t_map->map[i]))
         {
-            printf("This is not a rectangle (all lines need to be the same lenght)\n");
+            printf("This is not a rectangle (all lines need to be the same lenght).\n");
             return (-1);
         }
         else
@@ -80,7 +80,7 @@ int check_sides(t_list *t_map)
     {
         if (t_map->map[0][i] != '1' || t_map->map[t_map->height - 1][i] != '1')
         {
-            printf("The borders (height) are not all 1s\n");
+            printf("The borders (height) are not all 1s.\n");
             return (-1);
         }
         i++;    
@@ -90,7 +90,7 @@ int check_sides(t_list *t_map)
     {
         if (t_map->map[j][0] != '1' || t_map->map[j][t_map->width - 1] != '1')
         {
-            printf("The borders (width) are not all 1s\n");
+            printf("The borders (width) are not all 1s.\n");
             return (-1);
         }
         j++;
@@ -113,7 +113,7 @@ int check_inside(t_list *t_map)
         {
             if (t_map->map[i][j] != '1' && t_map->map[i][j] != '0' && t_map->map[i][j] != 'E' && t_map->map[i][j] != 'C' && t_map->map[i][j] != 'P')
             {
-                printf("Unwanted block in body\n");
+                printf("Unwanted block in body.\n");
                 return (-1);
             }
             j++;
