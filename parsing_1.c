@@ -6,7 +6,7 @@
 /*   By: nrubin <nrubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:59:24 by nrubin            #+#    #+#             */
-/*   Updated: 2021/09/17 12:20:17 by nrubin           ###   ########.fr       */
+/*   Updated: 2021/09/17 12:37:03 by nrubin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,8 @@ int	check_size(t_list *t_map)
 	int	i;
 
 	i = 0;
-	// Needs at least 3 lines
 	if (t_map->height < 3)
 		return (-1);
-	// Needs all lines to be the same width
 	while (i < t_map->height)
 	{
 		if (ft_strlen(t_map->map[0]) != ft_strlen(t_map->map[i]))
@@ -57,7 +55,6 @@ int	check_size(t_list *t_map)
 		else
 			i++;
 	}
-	// Since it is a rectangle, set the t_map width the to lenght of the first line.
 	t_map->width = ft_strlen(t_map->map[0]);
 	return (0);
 }
@@ -74,7 +71,7 @@ int	check_sides(t_list *t_map)
 	{
 		if (t_map->map[0][i] != '1' || t_map->map[t_map->height - 1][i] != '1')
 			return (-1);
-		i++;    
+		i++;
 	}
 	while (j < t_map->height)
 	{
@@ -98,7 +95,9 @@ int	check_inside(t_list *t_map)
 		j = 1;
 		while (j < t_map->width - 1)
 		{
-			if (t_map->map[i][j] != '1' && t_map->map[i][j] != '0' && t_map->map[i][j] != 'E' && t_map->map[i][j] != 'C' && t_map->map[i][j] != 'P')
+			if (t_map->map[i][j] != '1' && t_map->map[i][j] != '0' &&
+			t_map->map[i][j] != 'E' && t_map->map[i][j] != 'C' &&
+			t_map->map[i][j] != 'P')
 				return (-1);
 			j++;
 		}
