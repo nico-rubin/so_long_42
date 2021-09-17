@@ -6,13 +6,14 @@
 /*   By: nrubin <nrubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:59:24 by nrubin            #+#    #+#             */
-/*   Updated: 2021/09/17 17:16:23 by nrubin           ###   ########.fr       */
+/*   Updated: 2021/09/17 17:21:42 by nrubin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include "libft/libft.h"
 
+// Send map to check functions
 int	check_map(t_list t_map)
 {
 	if (check_size(&t_map) == -1)
