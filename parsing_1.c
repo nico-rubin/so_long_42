@@ -6,7 +6,7 @@
 /*   By: nrubin <nrubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:59:24 by nrubin            #+#    #+#             */
-/*   Updated: 2021/09/17 12:37:03 by nrubin           ###   ########.fr       */
+/*   Updated: 2021/09/17 16:40:00 by nrubin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ void	get_map_height(int fd, char **map, t_list *t_map)
 
 	i = 0;
 	while (get_next_line(fd, map))
+	{
+		free(map[i]);
 		i++;
+	}
+	free(map[i]);
 	i++;
 	t_map->height = i;
 }
@@ -35,9 +39,11 @@ void	read_map(int fd, char **map, t_list *t_map)
 	while (get_next_line(fd, map) > 0)
 	{
 		t_map->map[i] = ft_strdup(*map);
+		free(map[i]);
 		i++;
 	}
 	t_map->map[i] = ft_strdup(*map);
+	free(map[i]);
 }
 
 // Check that it is a rectangle
