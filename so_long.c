@@ -6,7 +6,7 @@
 /*   By: nrubin <nrubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:59:24 by nrubin            #+#    #+#             */
-/*   Updated: 2021/09/16 19:05:16 by nrubin           ###   ########.fr       */
+/*   Updated: 2021/09/17 11:47:30 by nrubin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,36 @@ int check_args(int argc, char **argv)
     }
 }
 
+int checks(t_list t_map)
+{
+    if (check_map(&t_map) == -1)
+        return (-1);
+    if (check_sides(&t_map) == -1)
+        return (-1);
+    if (check_inside(&t_map) == -1)
+        return (-1);
+    if (check_e(&t_map) == -1)
+        return (-1);
+    if (check_p(&t_map) == -1)
+        return (-1);
+    if (check_c(&t_map) == -1)
+        return (-1);
+    return (0); 
+}
+
+void    free_map(t_list *t_map)
+{
+    int i;
+
+    i = 0;
+    while (i < t_map->height)
+    {
+        free(t_map->map[i]);
+        i++;
+    }
+    free(t_map->map);
+}
+
 int main(int argc, char **argv)
 {
     t_list  t_map;
@@ -67,18 +97,11 @@ int main(int argc, char **argv)
     fd = open(argv[1], O_RDONLY);
     read_map(fd, argv, &t_map);
     close(fd);
-    if (check_map(&t_map) == -1)
-        return (-1);
-    if (check_sides(&t_map) == -1)
-        return (-1);
-    if (check_inside(&t_map) == -1)
-        return (-1);
-    if (check_e(&t_map) == -1)
-        return (-1);
-    if (check_p(&t_map) == -1)
-        return (-1);
-    if (check_c(&t_map) == -1)
-        return (-1);
-    printf("Map is good.\n");
+    if (checks(t_map) == -1)
+        printf("Error\n");
+    else
+        printf("Map is good.\n");
+    free_map(&t_map);
+    
     return (0);
 }
