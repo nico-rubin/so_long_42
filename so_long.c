@@ -6,7 +6,7 @@
 /*   By: nrubin <nrubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:59:24 by nrubin            #+#    #+#             */
-/*   Updated: 2021/09/17 16:38:51 by nrubin           ###   ########.fr       */
+/*   Updated: 2021/09/17 17:04:20 by nrubin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,12 +99,6 @@ int	main(int argc, char **argv)
 	close(fd);
 	if (check_map(t_map) == -1)
 		printf("Error\nMap error.\n");
-	int i = 0;
-	while (i < t_map.height)
-	{
-		printf("%s\n", t_map.map[i]);
-		i++;
-	}
 	free_map(&t_map);
 	return (0);
 }

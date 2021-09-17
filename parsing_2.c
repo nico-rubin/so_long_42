@@ -6,7 +6,7 @@
 /*   By: nrubin <nrubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 18:45:11 by nrubin            #+#    #+#             */
-/*   Updated: 2021/09/17 15:35:56 by nrubin           ###   ########.fr       */
+/*   Updated: 2021/09/17 17:02:25 by nrubin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,6 @@ int	check_fd(char **argv)
 		close(fd);
 		return (-1);
 	}
-	close(fd);
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 	{
