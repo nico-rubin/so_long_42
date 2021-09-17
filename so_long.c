@@ -6,7 +6,7 @@
 /*   By: nrubin <nrubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:59:24 by nrubin            #+#    #+#             */
-/*   Updated: 2021/09/17 11:47:30 by nrubin           ###   ########.fr       */
+/*   Updated: 2021/09/17 12:26:08 by nrubin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ int check_args(int argc, char **argv)
     }
 }
 
-int checks(t_list t_map)
+int check_map(t_list t_map)
 {
-    if (check_map(&t_map) == -1)
+    if (check_size(&t_map) == -1)
         return (-1);
     if (check_sides(&t_map) == -1)
         return (-1);
@@ -90,18 +90,24 @@ int main(int argc, char **argv)
 
     t_map = map_init();
     if (check_args(argc, argv) == -1)
+    {
+        printf("Error\n");
         return (-1);
-    fd = open(argv[1], O_RDONLY);
+    }
+    if (check_fd(argv) == 0)
+        fd = open(argv[1], O_RDONLY);
+    else
+    {
+        printf("Error\n");
+        return (-1);
+    }
     get_map_height(fd, argv, &t_map);
     close(fd);
     fd = open(argv[1], O_RDONLY);
     read_map(fd, argv, &t_map);
     close(fd);
-    if (checks(t_map) == -1)
+    if (check_map(t_map) == -1)
         printf("Error\n");
-    else
-        printf("Map is good.\n");
     free_map(&t_map);
-    
     return (0);
 }

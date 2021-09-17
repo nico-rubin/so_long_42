@@ -6,7 +6,7 @@
 /*   By: nrubin <nrubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 18:45:11 by nrubin            #+#    #+#             */
-/*   Updated: 2021/09/17 11:55:14 by nrubin           ###   ########.fr       */
+/*   Updated: 2021/09/17 12:22:23 by nrubin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,4 +102,25 @@ int check_c(t_list *t_map)
     if (c_count == 0)
         return (-1);
     return (0);
+}
+
+int	check_fd(char **argv)
+{
+	int	fd;
+
+	fd = open(argv[1], O_DIRECTORY);
+	if (fd >= 0)
+	{
+		close(fd);
+		return (-1);
+	}
+	close(fd);
+	fd = open(argv[1], O_RDONLY);
+	if (fd < 0)
+	{
+		close(fd);
+		return (-1);
+	}
+	close(fd);
+	return (0);
 }
