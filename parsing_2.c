@@ -6,13 +6,15 @@
 /*   By: nrubin <nrubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 18:45:11 by nrubin            #+#    #+#             */
-/*   Updated: 2021/09/17 12:31:35 by nrubin           ###   ########.fr       */
+/*   Updated: 2021/09/17 12:53:15 by nrubin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include "libft/libft.h"
 
+// Returns 1 at first occurence of the character 'c' in the string
+// 's', or 0 if 'c' is not found.
 int	ft_strfind(const char *s, int c)
 {
 	int	i;
@@ -104,6 +106,7 @@ int	check_c(t_list *t_map)
 	return (0);
 }
 
+// Checks that the fd is not a directory and that it is valid.
 int	check_fd(char **argv)
 {
 	int	fd;
