@@ -6,7 +6,7 @@
 /*   By: nrubin <nrubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 13:06:53 by nrubin            #+#    #+#             */
-/*   Updated: 2021/09/17 16:00:16 by nrubin           ###   ########.fr       */
+/*   Updated: 2021/09/17 17:17:44 by nrubin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,8 @@ int		check_c(t_list *t_map);
 int		ft_strfind(const char *s, int c);
 void	free_map(t_list *t_map);
 int		check_fd(char **argv);
+int		check_args(int argc, char **argv);
+t_list	map_init(void);
+
 
 #endif

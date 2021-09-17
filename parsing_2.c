@@ -6,30 +6,12 @@
 /*   By: nrubin <nrubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 18:45:11 by nrubin            #+#    #+#             */
-/*   Updated: 2021/09/17 17:02:25 by nrubin           ###   ########.fr       */
+/*   Updated: 2021/09/17 17:16:05 by nrubin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include "libft/libft.h"
-
-// Returns 1 at first occurence of the character 'c' in the string
-// 's', or 0 if 'c' is not found.
-int	ft_strfind(const char *s, int c)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == (char)c)
-			return (1);
-		i++;
-	}
-	if (s[i] == (char)c)
-		return (1);
-	return (0);
-}
 
 // Check that there is only one E 
 int	check_e(t_list *t_map)
@@ -125,4 +107,21 @@ int	check_fd(char **argv)
 	}
 	close(fd);
 	return (0);
+}
+
+// Check that the correct number of arguments are passed
+// to the function and that the argument is of correct type
+int	check_args(int argc, char **argv)
+{
+	char	*p;
+
+	if (argc != 2)
+		return (-1);
+	if (!ft_strfind(argv[1], '.'))
+		return (-1);
+	p = ft_strchr(argv[1], '.');
+	if (p[1] == 'b' && p[2] == 'e' && p[3] == 'r' && p[4] == '\0')
+		return (0);
+	else
+		return (-1);
 }
