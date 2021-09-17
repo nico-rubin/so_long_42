@@ -6,7 +6,7 @@
 /*   By: nrubin <nrubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:59:24 by nrubin            #+#    #+#             */
-/*   Updated: 2021/09/17 12:36:46 by nrubin           ###   ########.fr       */
+/*   Updated: 2021/09/17 13:04:43 by nrubin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,14 @@ int	check_args(int argc, char **argv)
 	char	*p;
 
 	if (argc != 2)
-	{
-		printf("Error. Enter only one argument.\n");
 		return (-1);
-	}
 	if (!ft_strfind(argv[1], '.'))
-	{
-		printf("Error. Not a file.\n");
 		return (-1);
-	}
 	p = ft_strchr(argv[1], '.');
 	if (p[1] == 'b' && p[2] == 'e' && p[3] == 'r' && p[4] == '\0')
 		return (0);
 	else
-	{
-		printf("Error. Not an accepted file type.\n");
 		return (-1);
-	}
 }
 
 int	check_map(t_list t_map)
