@@ -6,7 +6,7 @@
 /*   By: nrubin <nrubin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:59:24 by nrubin            #+#    #+#             */
-/*   Updated: 2021/09/17 17:05:32 by nrubin           ###   ########.fr       */
+/*   Updated: 2021/09/17 17:09:49 by nrubin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,8 @@ void	free_map(t_list *t_map)
 int	main(int argc, char **argv)
 {
 	t_list	t_map;
-	char	*ret[BUFFER_GNL + 1];
 	int		fd;
-	int		j;
 
-	j = 0;
 	t_map = map_init();
 	if (check_args(argc, argv) == -1)
 	{
@@ -92,13 +89,21 @@ int	main(int argc, char **argv)
 		printf("Error\nFile Descriptor error.\n");
 		return (-1);
 	}
-	get_map_height(fd, ret, &t_map);
+	get_map_height(fd, argv, &t_map);
 	close(fd);
 	fd = open(argv[1], O_RDONLY);
-	read_map(fd, ret, &t_map);
+	read_map(fd, argv, &t_map);
 	close(fd);
 	if (check_map(t_map) == -1)
 		printf("Error\nMap error.\n");
+	// START OF TEST //
+	int i = 0;
+	while (i < t_map.height)
+	{
+		printf("%s\n", t_map.map[i]);
+		i++;
+	}
+	// END OF TEST // 
 	free_map(&t_map);
 	return (0);
 }
